@@ -6,6 +6,25 @@
 using std::string;
 using std::vector;
 
+struct point
+{
+    int x;
+    int y;
+};
+
+struct character
+{
+    char style;
+    int len;
+    point* points;
+};
+
+typedef point size;
+
+enum align {
+    LEFT, CENTER, RIGHT
+};
+
 void SplitString(const string& s, vector<string>& v, const string& c);
 class picture {
 public:
@@ -26,13 +45,14 @@ public:
         return p + s;
     }
     picture() : pic("") {}
-    picture(string*, int l);
+    picture(string*, int l, align);
     string value() {
         return pic;
     }
     string frame();
     picture& connectionL(picture&);
     picture& connectionP(picture&);
+    picture& load(character*, int len, size);
     picture(const picture&);
     picture& operator-=(picture&);
     picture& operator|=(picture&);
