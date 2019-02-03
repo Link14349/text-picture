@@ -1,10 +1,17 @@
 #ifndef TEXTPICTURE_PICTURE_H
 #define TEXTPICTURE_PICTURE_H
 
+#include <cstdio>
+#include <cstdlib>
 #include <vector>
 #include <cstring>
+#include <map>
+
+#include <string>
 using std::string;
 using std::vector;
+using std::map;
+using std::pair;
 
 struct point
 {
@@ -49,10 +56,13 @@ public:
     string value() {
         return pic;
     }
-    string frame();
+    picture(character* list, int len, size s) : pic("") {
+        load(list, len, s);
+    }
+    string frame(string, string, string);
     picture& connectionL(picture&);
     picture& connectionP(picture&);
-    picture& load(character*, int len, size);
+    picture& load(character*, int, size);
     picture(const picture&);
     picture& operator-=(picture&);
     picture& operator|=(picture&);

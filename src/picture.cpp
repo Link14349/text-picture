@@ -1,7 +1,10 @@
+#include <string>
+#include <iostream>
 #include <vector>
 #include <cstring>
 #include <string.h>
 #include <algorithm>
+#include <map>
 #include "../include/picture.h"
 using std::string;
 using std::vector;
@@ -67,11 +70,11 @@ picture::picture(const picture & p) {
     pic = p.pic;
 }
 
-string picture::frame() {
+string picture::frame(string s = "+", string l = "-", string p = "|") {
     vector<string> v;
     SplitString(pic, v, "\n");
     for(vector<string>::size_type i = 0 ; i != v.size() ; ++i)
-        v[i] = "| " + v[i] + " |\n";
+        v[i] = p + " " + v[i] + " " + p + "\n";
     int len = v[0].length() - 3;
     pic = "";
     for(vector<string>::size_type i = 0 ; i != v.size() ; ++i) {
@@ -79,9 +82,9 @@ string picture::frame() {
     }
     string tmp("");
     for (int i = 0 ; i < len ; i++) {
-        tmp += "-";
+        tmp += l;
     }
-    pic = "+" + tmp + "+\n" + pic + "+" + tmp + "+";
+    pic = s + tmp + s + "\n" + pic + s + tmp + s;
     return pic;
 }
 picture& picture::connectionL(picture& p) {

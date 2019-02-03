@@ -11,11 +11,7 @@ picture get() {
     string init[100] = {};
     cout << "The length of texts: ";
     int len;
-    while (true) {
-        cin >> len;
-        if (len <= 100) break;
-        else cout << "Sorry, length must <= 100, please input again: ";
-    }
+    cin >> len;
     cout << "Texts: " << endl;
     for (int i = 0 ; i < len ; i++) {
         cin >> init[i];
